@@ -1,0 +1,17 @@
+
+CREATE TABLE reviews(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
+    name VARCHAR(50) NOT NULL,
+    review TEXT NOT NULL,
+    rating INT NOT NULL 
+        CHECK(rating >= 1 AND rating <= 5)
+);
+
+INSERT INTO reviews(name,restaurant_id,review,rating) VALUES ('abc',24,'dia diem nhu dau buoi',1);
+INSERT INTO reviews(name,restaurant_id,review,rating) VALUES ('bcd',24,'tuyet voi',1);
+INSERT INTO reviews(name,restaurant_id,review,rating) VALUES ('you',24,'dang cap',2);
+INSERT INTO reviews(name,restaurant_id,review,rating) VALUES ('you',4,'nhu lol',2);
+INSERT INTO reviews(name,restaurant_id,review,rating) VALUES ('ret',27,'ngu lol',3);
+
+SELECT * FROM reviews;

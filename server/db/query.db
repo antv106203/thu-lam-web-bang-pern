@@ -1,0 +1,6 @@
+INSERT INTO restaurants(name, location, price_range) VALUES ('mcdonalds','new york',3);
+
+UPDATE restaurants SET name = 'billy', location = 'ha noi' ,price_range = '2' WHERE id = 2;
+
+
+CREATE TABLE 
