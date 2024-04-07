@@ -38,14 +38,21 @@ app.get('/api/v1/restaurants', async(req,res) =>{
 app.get('/api/v1/restaurants/:id',async (req,res) =>{
     //console.log(req.params);
     try {
-        let results =await db.query(`select * from restaurants where id = ${req.params.id}`);
+        const results =await db.query("select * from restaurants where id = $1",[req.params.id]);
+
+        const reviews =await db.query("select * from reviews where restaurant_id = $1",[req.params.id]);
+
+        console.log( ">> check:" ,reviews.rows);
         res.status(200).json({
             status: "success",
             result: results.rows.length,
             data: {
                 restaurant: results.rows[0],
+                reviews: reviews.rows
             }
         });
+
+        
     } catch (error) {
         console.log('loi o phan show 1 khach san');
     }
